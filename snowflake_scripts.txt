@@ -1,0 +1,17 @@
+#create new database and schema
+create database news_covid_db;
+create schema exists news_schema;
+
+#use the new database and schema
+use news_covid_db;
+use news_schema;
+
+#create parquet file format
+create file format parquet_format TYPE=parquet;
+
+#create stage
+create or replace stage news_covid_db.news_schema.snow_simple url="s3://newscovid-vishnu/" 
+credentials=(aws_key_id=''
+aws_secret_key='');
+
+
